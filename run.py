@@ -27,7 +27,7 @@ from IPython import display
 import os
 import tqdm
 
-wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
+wandb.login(key="c5c292dfefdac173c19a6d2234a73bf850d87aa5")
 
 run = wandb.init(
     project="automathon"
