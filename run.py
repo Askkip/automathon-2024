@@ -27,6 +27,15 @@ from IPython import display
 import os
 import tqdm
 
+wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
+
+run = wandb.init(
+    project="automathon"
+)
+
+
+
+
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 dataset_dir = "/raid/datasets/hackathon2024"
 
@@ -35,7 +44,7 @@ mtcnn = MTCNN(keep_all=True, device=device)
 
 
 root_dir = os.path.expanduser("/raid/datasets/hackathon2024")
-root_dir = os.path.join(root_dir, "test_dataset", "experimental_dataset")
+root_dir = os.path.join(root_dir, "test_dataset")
 video_files = [f for f in os.listdir(root_dir) if f.endswith('.mp4')]
 
 out_path = "/raid/home/automathon_2024/account12/automathon-2024/output"
