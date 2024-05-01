@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+usr/bin/env python3
 
 import time
 import torch
@@ -19,7 +19,6 @@ import torchvision.transforms.v2 as transforms
 
 
 from facenet_pytorch import MTCNN
-import torch
 import numpy as np
 import cv2
 from PIL import Image, ImageDraw
@@ -33,9 +32,14 @@ dataset_dir = "/raid/datasets/hackathon2024"
 
 mtcnn = MTCNN(keep_all=True, device=device)
 
+wandb.login(key="c5c292dfefdac173c19a6d2234a73bf850d87aa5")
 
-root_dir = os.path.expanduser("/raid/datasets/hackathon2024")
-root_dir = os.path.join(root_dir, "test_dataset", "experimental_dataset")
+run = wandb.init(
+            project="automathon"
+            )
+
+root_dir= os.path.expanduser("/raid/datasets/hackathon2024")
+root_dir = os.path.join(root_dir, "test_dataset")
 video_files = [f for f in os.listdir(root_dir) if f.endswith('.mp4')]
 
 out_path = "/raid/home/automathon_2024/account12/automathon-2024/output"
@@ -65,9 +69,9 @@ for nb,video_name in enumerate(video_files) :
 
             frames_tracked.append((frame_draw.crop(box.tolist()).resize((112, 112), Image.BILINEAR)))
 
-        print('\nDone'+str(nb))
+        print("\nDone"+str(nb))
 
-        out = cv2.VideoWriter(out_path+'/'+video_name[:-4]+'_cropped'+'.mp4',cv2.VideoWriter_fourcc('m','p','4','v'), 30, (112,112))
+        out = cv2.VideoWriter(out_path+'/'+video_name[:-4]+''+'.mp4',cv2.VideoWriter_fourcc('m','p','4','v'), 30, (112,112))
 
         numpy_image = np.array(frames_tracked[0])
         opencv_image = cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/raid/home/automathon_2024/account12/automathon-2024/run.py", line 42, in <module>
+    root_dir = os.path.join(root_dir, "test_dataset")
+NameError: name 'root_dir' is not defined. Did you mean: 'root_diz'?
+Traceback (most recent call last):
+  File "/raid/home/automathon_2024/account12/automathon-2024/run.py", line 42, in <module>
+    root_dir = os.path.join(root_dir, "test_dataset")
+NameError: name 'root_dir' is not defined. Did you mean: 'root_diz'?
