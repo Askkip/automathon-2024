@@ -1,4 +1,4 @@
-usr/bin/env python3
+#/usr/bin/env python3
 
 import time
 import torch
@@ -26,6 +26,15 @@ from IPython import display
 import os
 import tqdm
 
+wandb.login(key="c5c292dfefdac173c19a6d2234a73bf850d87aa5")
+
+run = wandb.init(
+    project="automathon"
+)
+
+
+
+
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 dataset_dir = "/raid/datasets/hackathon2024"
 
@@ -37,6 +46,7 @@ wandb.login(key="c5c292dfefdac173c19a6d2234a73bf850d87aa5")
 run = wandb.init(
             project="automathon"
             )
+
 
 root_dir= os.path.expanduser("/raid/datasets/hackathon2024")
 root_dir = os.path.join(root_dir, "test_dataset")
